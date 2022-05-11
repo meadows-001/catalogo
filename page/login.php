@@ -67,7 +67,7 @@ if (!isset($_SESSION['backto'])) {
                 <?php endif; ?>
 
                 <div class="form-container">
-                    <input class="form-textarea" name="username" size="30" placeholder="username">
+                    <input class="form-textarea" name="username" size="30" placeholder="username" value="<?= $_SESSION['add_data']['username'] ?? '' ?>">
                     <canvas class="form-textarea-status"></canvas>
                 </div>
 
