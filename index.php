@@ -26,6 +26,5 @@ else if ($_SESSION['user']['role'] ?? '') {
 </head>
 <body>
 <h1>redirect</h1>
-<?= $log ?>
 </body>
 </html>
