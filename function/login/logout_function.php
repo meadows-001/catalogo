@@ -4,8 +4,8 @@ require_once "../../config.php";
 
 unset($_SESSION['user']);
 unset($_SESSION['username']);
-$_SESSION['msg'] = 'logout';
-echo $_SESSION['msg'];
+$_SESSION['log'] = 'notlogged';
+echo $_SESSION['log'];
 
 $backto = $_SESSION['backto'] ?? '../../index.php';
 unset($_SESSION['backto']);
