@@ -8,6 +8,7 @@
     <link href="../../style/features/navbar.css" rel="stylesheet">
     <link href="../../style/page/admin.css" rel="stylesheet">
     <link href="../../style/features/product.css" rel="stylesheet">
+    <link href="../../style/page/modify-add.css" rel="stylesheet">
 
     <script src="../main.js" rel="script"></script>
 
@@ -43,7 +44,7 @@ $stmt_product->bindParam(":id", $id);
 $stmt_product->execute();
 $product = $stmt_product->fetch(PDO::FETCH_ASSOC);
 
-$stmt_company = $db->prepare("SELECT * FROM user WHERE type = 'company'");
+$stmt_company = $db->prepare("SELECT * FROM user WHERE role = 'company'");
 $stmt_company->execute();
 
 }catch (PDOException $e) {
@@ -62,7 +63,7 @@ if (isset($_SESSION['add_data'])) {
 } else {
     $msg = '';
     $name = $product['name'];
-    $company = $product['company'];
+    $company = $product['company_id'];
     $description =  $product['description'];
     $price = $product['price'];
     $link = $product['link'];
