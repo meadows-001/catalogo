@@ -1,6 +1,8 @@
 <?php
 require_once 'config.php';
 
+
+
 if ($_SESSION['msg'] == 'logout' || $_SESSION['msg'] == '') {
     header('location: page/home.php');
     $_SESSION['msg'] = '';
@@ -17,6 +19,9 @@ else if ($_SESSION['user']['role'] ?? '') {
     else if ($_SESSION['user']['role'] == 'client') header('location: page/Client.php');
 }
 
+if ($_SESSION['msg'] == 'ok') {
+    $_SESSION['msg'] = '';
+}
 
 
 ?>
