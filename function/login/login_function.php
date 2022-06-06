@@ -2,18 +2,13 @@
 
 require_once "../../config.php";
 
-#var_export($_POST);
-
 $user = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
 
-echo $user, $password;
-
 if ($user == '' ||  $password == '') {
-    $_SESSION['add_data'] = [
-        'msg' => 'complete field',
-        'username' => $user
-    ];
+    $_SESSION['add_data'] = ['username' => $user];
+    $_SESSION['msg'] = 'complete field';
+    $_SESSION['log'] = 'error_log';
     header('location: ../../page/login.php');
     die();
 }
@@ -21,7 +16,7 @@ if ($user == '' ||  $password == '') {
 unset($_SESSION['user']);
 
 try {
-    $stmt = $db-> prepare(" 
+    $stmt = $db->prepare(" 
         SELECT id, username, role FROM user WHERE 
                     username=:username  AND `password` = MD5(CONCAT(:password, :salt))
     ");
@@ -31,25 +26,17 @@ try {
     $stmt->execute();
     if ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $_SESSION['user'] = $user;
-        $_SESSION['username'] = $_POST['username'] ?? '';
-        $_SESSION['msg'] = 'ok';
+        $_SESSION['log'] = 'logged';
     } else {
+        $_SESSION['log'] = 'error_log';
         $_SESSION['msg'] = 'username or password wrong';
     }
-}catch (PDOException $e) {
+} catch (PDOException $e) {
     echo "Errore: " . $e->getMessage();
     die();
 }
 
-echo $_SESSION['msg'];
-
-#var_export($_SESSION['user']);
 
 $backto = $_SESSION['backto'] ?? '/index.php';
 unset($_SESSION['backto']);
-
-if ($_SESSION['msg'] == 'ok') header("location: /index");
-else header("location: /index.php");
-
-
-
+header("location: /index.php");
