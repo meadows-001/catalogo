@@ -1,113 +1,65 @@
-
-#products {
-    padding: 10px;
-
-    min-width: 840px;
-    max-width: 1050px;
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.product {
+.item {
     display: flex;
     flex-direction: column;
     float: left;
-
-    box-shadow: 0 0 20px 1px rgb(0, 0, 0, 0.2);
-    border-radius: 3px;
-    margin: 5px;
-
-    width: 200px;
+    margin: 10px;
+    width: 150px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px 0px rgb(0, 0, 0, 0.1);
+    background: rgb(40, 40, 50, 0.3);
 }
 
-.img-box {
-    background: rgba(0,0,0,0.2);
+.item-container-image {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    min-height: 150px;
+    height: 150px;
+    width: 150px;
+    border-radius: 6px;
     overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
 }
 
-.image {
-    max-height: 150px;
+.item-image {
+    height: 150px;
 }
 
-.default{
-    width: 5vh;
-    height: 5vh;
-}
-
-
-.information {
-    background: rgb(205, 205, 205, 0.3);
+.item-container-information {
     display: flex;
     flex-direction: column;
-
-    padding: 10px;
-
-    font-family: Calibri;
+    align-items: center;
+    padding: 5px 10px;
 }
 
-.name, .id { font-weight: bold; }
-
-.company { font-size: 12px}
+.item-element {
+    font-size: 15px;
+    font-weight: bold;
+}
 
 .description {
-    box-shadow: inset 0 0 10px 5px rgb(0, 0, 0, 0.2);
-
-    border-radius: 1px;
-    margin: 2px 2px 2px 0;
-    padding: 3px 10px;
-
-    height: 20px;
-
-
+    font-size: 10px;
 }
 
-.name , .description{
-    display: block;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.price {
-    font-weight: bold;
-    font-family: Consolas;
-}
-
-
-.bought-div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2px 0 5px;
-}
-
-.div-form {
-    display: flex;
-    flex-direction: row;
-}
-
-.form-button, .form-button-company {
+.form-button,
+.form-button-company {
     background: rgb(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 40px;
-
     margin-top: 5px;
     padding: 2px 0;
     border-radius: 1px;
-
     color: rgb(255, 255, 255, 0.9);
     font-family: Calibri;
     font-weight: bold;
-
     text-decoration: none;
     cursor: pointer;
-
     transition-duration: 500ms;
 }
 
@@ -115,54 +67,49 @@
     flex-grow: 1;
 }
 
-.form-button:hover, .form-button-company:hover {
-    background: rgba(55,191,96,0.91);
-
+.form-button:hover,
+.form-button-company:hover {
+    background: rgba(55, 191, 96, 0.91);
     transition-duration: 500ms;
 }
 
 .form-button-company.delete:hover {
-    background: rgba(255,5,0,0.91);
+    background: rgba(255, 5, 0, 0.91);
 }
 
 .div-margin {
     width: 10px;
 }
 
-.modify { margin-right: 10px}
+.modify {
+    margin-right: 10px
+}
 
 @media screen and (max-width: 900px) {
-
     #products {
         width: inherit;
         min-width: unset;
     }
-
     .product {
         flex-direction: row;
-
         width: -webkit-fill-available;
         min-height: 100px;
         height: auto !important;
         float: none;
     }
-
     .img-box {
         float: left;
         max-width: 150px;
         min-width: 150px;
     }
-
     .information {
         float: left;
         width: -webkit-fill-available;
         padding: 10px;
     }
-
     .description {
         white-space: normal;
     }
-
     .bought-div {
         align-items: flex-end;
         height: 66px;

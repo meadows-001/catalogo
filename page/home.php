@@ -12,7 +12,6 @@
     <link href="../style/main.css" rel="stylesheet">
     <link href="../style/home.css" rel="stylesheet">
     <link href="../style/navbar.css" rel="stylesheet">
-    <link href="../style/item.css" rel="stylesheet">
 
     <script src="../function/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -40,7 +39,7 @@
 
     <script>
         window.onload = function() {
-            home_load('product.php', (text) => {
+            ajax_load('home_client_product.php', (text) => {
                 document.getElementById('items').innerHTML = text
             })
 

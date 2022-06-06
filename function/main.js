@@ -4,7 +4,7 @@ function navbar() {
 
     if (navbar.className == 'navbar') {
         navbar.className += ' responsive';
-    } else  {
+    } else {
         navbar.className = 'navbar';
     }
 }
@@ -31,7 +31,7 @@ function select_image(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
-        reader.onload = function (e) {
+        reader.onload = function(e) {
             //$('#pim').attr('src', e.target.result);
             document.getElementById('pim').src = e.target.result;
             document.getElementById('pim').style.opacity = '1';
@@ -41,29 +41,32 @@ function select_image(input) {
     }
 }
 
-function admin_load(url, callback, method='GET')
-{
+
+function ajax_load(url, callback, method = 'GET') {
+    fetch('../function/' + url)
+        .then(response => response.text())
+        .then(data => callback(data))
+}
+
+function admin_load(url, callback, method = 'GET') {
     fetch('../function/admin/' + url)
         .then(response => response.text())
         .then(data => callback(data))
 }
 
-function company_load(url, callback, method='GET')
-{
+function company_load(url, callback, method = 'GET') {
     fetch('../function/company/' + url)
         .then(response => response.text())
         .then(data => callback(data))
 }
 
-function client_load(url, callback, method='GET')
-{
+function client_load(url, callback, method = 'GET') {
     fetch('../function/client/' + url)
         .then(response => response.text())
         .then(data => callback(data))
 }
 
-function home_load(url, callback, method='GET')
-{
+function home_load(url, callback, method = 'GET') {
     fetch('../function/home/' + url)
         .then(response => response.text())
         .then(data => callback(data))
@@ -71,20 +74,20 @@ function home_load(url, callback, method='GET')
 
 function delete_element(id) {
     if (confirm('are you sure?'))
-        location = "/../function/common/product_delete.php?id="+id
+        location = "/../function/common/product_delete.php?id=" + id
 }
 
 function delete_profile(id) {
     if (confirm('are you sure?'))
-        location = "/../function/common/profile_delete.php?id="+id
+        location = "/../function/common/profile_delete.php?id=" + id
 }
 
 function admin_modify_product(id) {
-    location = "/../function/admin/product_modify.php?id="+id
+    location = "/../function/admin/product_modify.php?id=" + id
 }
 
 function company_modify_product(id) {
-    location = "/../function/company/product_modify.php?id="+id
+    location = "/../function/company/product_modify.php?id=" + id
 }
 
 function add_product() {
@@ -92,5 +95,5 @@ function add_product() {
 }
 
 function product_show(id) {
-    location = "/../function/home/product-show.php?id="+id
+    location = "/../function/home/product-show.php?id=" + id
 }

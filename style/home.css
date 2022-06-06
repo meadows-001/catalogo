@@ -5,9 +5,13 @@
 
 .main {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    width: 630px;
+    width: calc(100vw - 40vw);
     margin-top: 30px;
 }
 
+
+/*
 @media screen and (max-width: 900px) {}
+*/
