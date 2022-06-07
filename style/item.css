@@ -1,5 +1,6 @@
 * {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(255, 255, 255, 0.745);
 }
 
 .item {
@@ -25,6 +26,12 @@
     background: rgba(0, 0, 0, 0.2);
 }
 
+.default {
+    height: 50px !important;
+    width: 50px;
+    padding: 50px;
+}
+
 .item-image {
     height: 150px;
 }
@@ -44,6 +51,49 @@
 .description {
     font-size: 10px;
 }
+
+.item-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: -webkit-fill-available;
+}
+
+
+/* admin */
+
+.item-button {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 2px;
+    background: rgb(0, 0, 0, 0.15);
+    color: rgb(255, 255, 255, 0.9);
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 400ms;
+}
+
+.item-button.delete,
+.item-button.modify {
+    margin-bottom: -10px;
+}
+
+.item-button.delete:hover {
+    background: rgba(255, 5, 0, 0.91);
+    transition-duration: 400ms;
+}
+
+.item-button.modify:hover {
+    background: rgba(55, 191, 96, 0.91);
+    transition-duration: 500ms;
+}
+
+
+/*
 
 .form-button,
 .form-button-company {
@@ -71,10 +121,6 @@
 .form-button-company:hover {
     background: rgba(55, 191, 96, 0.91);
     transition-duration: 500ms;
-}
-
-.form-button-company.delete:hover {
-    background: rgba(255, 5, 0, 0.91);
 }
 
 .div-margin {
@@ -115,3 +161,5 @@
         height: 66px;
     }
 }
+
+*/

@@ -24,7 +24,7 @@ try {
             <?php if (file_exists("../src/product/$row[id].jpg")) : ?>
                 <img class="item-image" src="../src/product/<?= $row['id'] ?>.jpg">
             <?php else : ?>
-                <img class="item-image" src="../src/product/default.png">
+                <img class="item-image default" src="../src/product/default.png">
             <?php endif; ?>
         </div>
         <div class="item-container-information">

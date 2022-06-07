@@ -17,8 +17,8 @@ if (!isset($_SESSION['backto'])) {
 
     <title>login</title>
     <link href="../style/main.css" rel="stylesheet">
-    <link href="../style/page/login.css" rel="stylesheet">
-    <link href="../style/features/navbar.css" rel="stylesheet">
+    <link href="../style/login.css" rel="stylesheet">
+    <link href="../style/navbar.css" rel="stylesheet">
 
     <link href="../source/img/favicon/login.png" rel="icon">
 
@@ -29,62 +29,52 @@ if (!isset($_SESSION['backto'])) {
 </head>
 
 <body>
-    <div class="grid-page">
-        <div class="navbar">
-            <nav class="navbar" id="navbar">
-                <div class="left">
-                    <ion-icon class="header-icon" name="log-in-outline"></ion-icon>
-                </div>
-                <div class="center"></div>
-                <div class="right">
-                    <a class="navbar-button" onclick="history.back()">
-                        <label class="header-menu-text">cancel</label>
-                        <ion-icon class="header-menu-icon" name="close-outline"></ion-icon>
-                    </a>
-                </div>
-                <div class="menu">
-                    <a class="navbar-menu-button" onclick="navbar()">
-                        <ion-icon class="header-icon" name="menu-outline"></ion-icon>
-                    </a>
-                </div>
-            </nav>
+    <nav class="navbar">
+        <div class="navbar-side-left">
+            <ion-icon class="navbar-logo" name="log-in-outline"></ion-icon>
         </div>
+        <div class="navbar-side-center"></div>
+        <div class="navbar-side-right">
+            <a class="navbar-button" onclick="history.back()">
+                <label class="navbar-text">cancel</label>
+                <ion-icon class="navbar-icon" name="close-outline"></ion-icon>
+            </a>
+        </div>
+    </nav>
+    <div class="container">
+        <form method="post" action="../function/login/login_function.php">
 
-        <div class="grid-container">
-            <div class="container">
-                <form method="post" action="../function/login/login_function.php" id="form">
+            <label class="form-title">Log in</label>
 
-                    <label class="form-title">Log in</label>
+            <?php if ($_SESSION['log'] == 'error_log') : ?>
+                <label class="form-message"><?= $_SESSION['msg'] ?></label>
+                <style type="text/css">
+                    .status {
+                        background: rgb(200, 0, 0, 0.8);
+                    }
+                </style>
+                <?php unset($_SESSION['msg']); ?>
+                <?php $_SESSION['log'] = ''; ?>
+            <?php endif; ?>
 
-                    <?php if ($_SESSION['log'] == 'error_log') : ?>
-                        <label class="message"><?= $_SESSION['msg'] ?></label>
-                        <style type="text/css">
-                            .form-textarea-status {
-                                background: #cd000a;
-                            }
-                        </style>
-                        <?php unset($_SESSION['msg']) ?>
-                    <?php endif; ?>
-
-                    <div class="form-container">
-                        <input class="form-textarea" name="username" size="30" placeholder="username" value="<?= $_SESSION['add_data']['username'] ?? '' ?>">
-                        <canvas class="form-textarea-status"></canvas>
-                    </div>
-
-                    <div class="form-container">
-                        <input class="form-textarea" name="password" type="password" size="30" placeholder="password">
-                        <canvas class="form-textarea-status"></canvas>
-                    </div>
-
-                    <div class="form-container">
-                        <input id="submit" type="submit" value="login">
-                        <label class="text">you don't have an account? <a class="link" href="register.php">register</a></label>
-                    </div>
-                </form>
+            <div class="form-container">
+                <input class="form-input username" name="username" size="30" placeholder="username" value="<?= $_SESSION['add_data']['username'] ?? '' ?>">
+                <canvas class="form-input status"></canvas>
             </div>
-        </div>
+
+            <div class="form-container">
+                <input class="form-input password" name="password" type="password" size="30" placeholder="password">
+                <canvas class="form-input status"></canvas>
+            </div>
+
+            <div class="form-container">
+                <input class="form-input submit" type="submit" value="login">
+                <label class="form-text">you don't have an account? <a class="form-link" href="register.php">register</a></label>
+            </div>
+        </form>
     </div>
-    <canvas id="background"></canvas>
+
+    <?php unset($_SESSION['add_data']); ?>
 </body>
 
 </html>

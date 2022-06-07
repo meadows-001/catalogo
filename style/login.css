@@ -1,52 +1,29 @@
-.grid-page {
-    display: grid;
-    grid-template-areas: 'navbar' 'page';
-}
-
-.grid-container {
-    display: grid;
-    grid-area: page;
-    grid-template-areas: 'container';
-    gap: 50px;
-    justify-content: center;
+* {
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .container {
-    grid-area: container;
-    margin: 20% 0;
-}
-
-.header-menu-icon {
-    display: none;
-}
-
-.header-menu-text {
-    display: flex !important;
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 70px);
 }
 
 form {
-    background: rgba(255, 255, 255, 0.24);
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 15px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 20px;
+    margin-top: 10vh;
 }
 
 .form-title {
+    font-size: 100px;
     font-weight: bold;
-    font-size: 30px;
-    font-family: Calibri;
-    opacity: 60%;
 }
 
-.message {
+.form-message {
     display: flex;
-    color: #ff000e;
-    font-size: 10px;
+    color: rgba(200, 0, 0, 0.8);
+    font-size: 20px;
 }
 
 .form-container {
@@ -56,7 +33,7 @@ form {
     margin: 5px;
 }
 
-.form-textarea {
+.form-input {
     background: transparent;
     border: none;
     padding: 5px 5px 2px;
@@ -67,19 +44,21 @@ form {
     transition-duration: 1000ms;
 }
 
-.form-textarea-status {
-    background: rgba(255, 255, 255, 0.4);
-    height: 3px;
+.status {
+    height: 2px;
     width: -webkit-fill-available;
+    margin: 0;
+    padding: 0;
     border-radius: 2px;
+    background: rgba(100, 100, 100, 0.4);
 }
 
 select {
     border-radius: 1px;
 }
 
-#submit {
-    background: rgba(255, 255, 255, 0.2);
+.submit {
+    background: rgba(100, 100, 100, 0.2);
     border: none;
     border-radius: 3px;
     padding: 10px 30px;
@@ -92,17 +71,17 @@ select {
     transition-duration: 500ms;
 }
 
-#submit:hover {
+.submit:hover {
     background: rgba(68, 237, 122, 0.91);
     transition-duration: 500ms;
 }
 
-.text {
+.form-text {
     margin-top: 5px;
     font-size: 10px;
 }
 
-.link {
+.form-link {
     color: rgba(0, 149, 255, 0.91);
     text-decoration: none;
     transition-duration: 500ms;

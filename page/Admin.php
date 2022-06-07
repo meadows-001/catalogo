@@ -15,11 +15,8 @@ verify('admin');
     <link href="../source/favicon/admin.png" rel="icon">
 
     <link href="../style/main.css" rel="stylesheet">
-    <link href="../style/features/navbar.css" rel="stylesheet">
-
-    <link href="../style/features/profile.css" rel="stylesheet">
-    <link href="../style/features/product.css" rel="stylesheet">
-    <link href="../style/page/admin.css" rel="stylesheet">
+    <link href="../style/admin.css" rel="stylesheet">
+    <link href="../style/navbar.css" rel="stylesheet">
 
     <script src="../function/main.js" rel="script"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -27,55 +24,42 @@ verify('admin');
 </head>
 <body>
 
-<div class="grid-page">
-    <div class="navbar">
-        <nav class="navbar" id="navbar">
-            <div class="left">
-                <ion-icon class="header-icon" name="extension-puzzle-outline"></ion-icon>
+        <nav class="navbar">
+            <div class="navbar-side-left">
+                <ion-icon class="navbar-logo" name="extension-puzzle-outline"></ion-icon>
             </div>
-            <div class="center"></div>
-            <div class="right">
+            <div class="navbar-side-center"></div>
+            <div class="navbar-side-right">
                 <a class="navbar-button" href="setting.php">
-                    <label class="header-menu-text">setting</label>
-                    <ion-icon class="header-menu-icon" name="cog-outline"></ion-icon>
+                    <label class="navbar-text">setting</label>
+                    <ion-icon class="navbar-icon" name="cog-outline"></ion-icon>
                 </a>
                 <a class="navbar-button" href="../function/login/logout_function.php">
-                    <label class="header-menu-text">logout</label>
-                    <ion-icon class="header-menu-icon" name="log-out-outline"></ion-icon>
+                    <label class="navbar-text">logout</label>
+                    <ion-icon class="navbar-icon" name="log-out-outline"></ion-icon>
                 </a>
                 <a class="navbar-button show-profile" id="show" onclick="show_div()">
-                    <label class="header-menu-text text-profile">profile</label>
-                    <ion-icon class="header-menu-icon icon-profile" name="person-outline"></ion-icon>
+                    <label class="navbar-text text-profile">profile</label>
+                    <ion-icon class="navbar-icon icon-profile" name="person-outline"></ion-icon>
 
-                    <label class="header-menu-text text-product">product</label>
-                    <ion-icon class="header-menu-icon icon-product" name="pricetag-outline"></ion-icon>
-                </a>
-            </div>
-            <div class="menu">
-                <a class="navbar-menu-button" onclick="navbar()">
-                    <ion-icon class="header-icon" name="menu-outline"></ion-icon>
+                    <label class="navbar-text text-product">product</label>
+                    <ion-icon class="navbar-icon icon-product" name="pricetag-outline"></ion-icon>
                 </a>
             </div>
         </nav>
-    </div>
 
-    <div class="grid-container">
-        <div class="menu"></div>
+
+    <div class="container">
         <div class="main" id="profiles"></div>
         <div class="main" id="products"></div>
-        <div class="right"></div>
-        <div class="footer"></div>
     </div>
-</div>
-</div>
-<canvas id="background"></canvas>
 <script>
     window.onload = function () {
-        admin_load('profile.php', (text) => {
+        ajax_load('admin_profile.php', (text) => {
             document.getElementById('profiles').innerHTML = text
         })
 
-        admin_load('product.php', (text) => {
+        ajax_load('admin_product.php', (text) => {
             document.getElementById('products').innerHTML = text
         })
     }

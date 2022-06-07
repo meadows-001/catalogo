@@ -1,20 +1,33 @@
-.navbar-button.show-profile .header-menu-text.text-profile,
-.navbar-button.show-profile .header-menu-icon.icon-profile {
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: calc(100vw - 40vw);
+    margin-top: 30px;
+}
+
+.navbar-button.show-profile .navbar-text.text-profile,
+.navbar-button.show-profile .navbar-icon.icon-profile {
     display: flex;
 }
 
-.navbar-button.show-profile .header-menu-text.text-product,
-.navbar-button.show-profile .header-menu-icon.icon-product {
+.navbar-button.show-profile .navbar-text.text-product,
+.navbar-button.show-profile .navbar-icon.icon-product {
     display: none !important;
 }
 
-.navbar-button.show-product .header-menu-text.text-profile,
-.navbar-button.show-product .header-menu-icon.icon-profile {
+.navbar-button.show-product .navbar-text.text-profile,
+.navbar-button.show-product .navbar-icon.icon-profile {
     display: none !important;
 }
 
-.navbar-button.show-product .header-menu-text.text-product,
-.navbar-button.show-product .header-menu-icon.icon-product {
+.navbar-button.show-product .navabr-text.text-product,
+.navbar-button.show-product .navbar-icon.icon-product {
     display: flex;
 }
 

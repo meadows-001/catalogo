@@ -18,10 +18,10 @@ function show_div() {
     if (button.className === 'navbar-button show-profile') {
         button.className = 'navbar-button show-product';
         profiles.style.display = 'none';
-        products.style.display = 'block';
+        products.style.display = 'flex';
     } else {
         button.className = 'navbar-button show-profile';
-        profiles.style.display = 'block';
+        profiles.style.display = 'flex';
         products.style.display = 'none';
     }
 }
@@ -33,8 +33,8 @@ function select_image(input) {
 
         reader.onload = function(e) {
             //$('#pim').attr('src', e.target.result);
-            document.getElementById('pim').src = e.target.result;
-            document.getElementById('pim').style.opacity = '1';
+            document.getElementById('item-image').src = e.target.result;
+            document.getElementById('item-image').style.opacity = '1';
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -83,7 +83,7 @@ function delete_profile(id) {
 }
 
 function admin_modify_product(id) {
-    location = "/../function/admin/product_modify.php?id=" + id
+    location = "/../function/admin_product_modify.php?id=" + id
 }
 
 function company_modify_product(id) {
