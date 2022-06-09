@@ -18,10 +18,10 @@ try {
 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
     <div class="item">
 <div class="item-container-image">
-        <?php if (file_exists("../../src/profile/$row[id].jpg")): ?>
+        <?php if (file_exists("../src/profile/$row[id].jpg")): ?>
             <img class="item-image" src="../src/profile/<?= $row['id'] ?>.jpg">
         <?php else: ?>
-            <img class="item-image default" src="../../src/profile/default.png" style="opacity: 50%">
+            <img class="item-image default" src="../src/profile/default.png" style="opacity: 50%">
         <?php endif; ?>
 </div>
 

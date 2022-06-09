@@ -13,16 +13,16 @@ if (isset($_SESSION['add_data'])) {
 
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>register</title>
     <link href="../style/main.css" rel="stylesheet">
-    <link href="../style/page/login.css" rel="stylesheet">
-    <link href="../style/features/navbar.css" rel="stylesheet">
+    <link href="../style/login.css" rel="stylesheet">
+    <link href="../style/navbar.css" rel="stylesheet">
 
     <link href="../source/img/favicon/login.png" rel="icon">
 
@@ -31,69 +31,75 @@ if (isset($_SESSION['add_data'])) {
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </head>
+
 <body>
-
-<div class="grid-page">
-    <div class="navbar">
-        <nav class="navbar" id="navbar">
-            <div class="left">
-                <ion-icon class="header-icon" name="log-in-outline"></ion-icon>
-            </div>
-            <div class="center"></div>
-            <div class="right">
-                <a class="navbar-button" onclick="history.back()">
-                    <label class="header-menu-text">cancel</label>
-                    <ion-icon class="header-menu-icon" name="close-outline"></ion-icon>
-                </a>
-            </div>
-            <div class="menu">
-                <a class="navbar-menu-button" onclick="navbar()">
-                    <ion-icon class="header-icon" name="menu-outline"></ion-icon>
-                </a>
-            </div>
-        </nav>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-side-left">
+            <ion-icon class="navbar-logo" name="log-in-outline"></ion-icon>
+        </div>
+        <div class="navbar-side-center"></div>
+        <div class="navbar-side-right">
+            <a class="navbar-button r" onclick="history.back()">
+                <label class="navbar-text">cancel</label>
+                <ion-icon class="navbar-icon" name="close-outline"></ion-icon>
+            </a>
+        </div>
+    </nav>
     </div>
+    <div class="container">
+        <form method="post" action="../function/register/register_function.php" id="form">
 
-    <div class="grid-container">
-        <div class="container">
-            <form method="post" action="../function/register/register_function.php" id="form">
+            <label class="form-title">Register</label>
 
-                <label class="form-title">Register</label>
+            <input id="input-image" name="input-image" type='file' onchange="select_image(this);" />
+            <div class="form-button-image">
+                browse
+                <ion-icon class="icon" name="image-outline"></ion-icon>
+            </div>
+            <div class="form-container-image">
+                <img id="item-image" class="image" src="../../src/product/alert-outline.png">
+            </div>
 
-                <div>
-                    <div class="form-container">
-                        <input class="form-textarea" name="username" size="30" placeholder="username"
-                               value="<?= $username ?>">
-                        <canvas class="form-textarea-status"></canvas>
-                    </div>
+            <?php if ($_SESSION['log'] == 'error_log') : ?>
+                <label class="form-message"><?= $_SESSION['msg'] ?></label>
+                <style type="text/css">
+                    .status {
+                        background: rgb(200, 0, 0, 0.8);
+                    }
+                </style>
+                <?php unset($_SESSION['msg']); ?>
+                <?php $_SESSION['log'] = ''; ?>
+            <?php endif; ?>
 
-                    <div class="form-container">
-                        <select class="form-textarea" name="role">
-                            <option value="" hidden>role</option>
-                            <option value="client">client</option>
-                            <option value="company">company</option>
-                        </select>
-                        <canvas class="form-textarea-status"></canvas>
-                    </div>
-
-                    <div class="form-container">
-                        <input class="form-textarea" name="password" type="password" size="30" placeholder="password">
-                        <canvas class="form-textarea-status"></canvas>
-                    </div>
-
-                    <div class="form-container">
-                        <input class="form-textarea" name="confirm-password" type="password" size="30"
-                               placeholder="confirm password">
-                        <canvas class="form-textarea-status"></canvas>
-                    </div>
+            <div>
+                <div class="form-container">
+                    <input class="form-input" name="username" size="30" placeholder="username" value="<?= $username ?>">
+                    <canvas class="form-input status"></canvas>
                 </div>
 
                 <div class="form-container">
-                    <input id="submit" type="submit" value="register">
+                    <select class="form-input" name="role">
+                        <option value="" hidden style="color: black;">role</option>
+                        <option value="client" style="color: black;">client</option>
+                        <option value="company" style="color: black;">company</option>
+                    </select>
+                    <canvas class="form-input status"></canvas>
                 </div>
-            </form>
-        </div>
+
+                <div class="form-container">
+                    <input class="form-input" name="password" type="password" size="30" placeholder="password">
+                    <canvas class="form-input status"></canvas>
+                </div>
+
+                <div class="form-container">
+                    <input class="form-input" name="confirm-password" type="password" size="30" placeholder="confirm password">
+                    <canvas class="form-input status"></canvas>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <input class="form-input submit" type="submit" value="register">
+            </div>
+        </form>
     </div>
-</div>
-<canvas id="background"></canvas>
 </body>

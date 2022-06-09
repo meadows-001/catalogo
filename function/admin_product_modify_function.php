@@ -1,11 +1,12 @@
 <?php
 
-require "../../config.php";
+require "../config.php";
 
 #echo '<pre>';  var_export($_POST); var_export($_FILES); die;
 
 $name = $_POST['name'] ?? '';
 $company = $_POST['company_id'] ?? '';
+$category = $_POST['category_id'] ?? '';
 $description = $_POST['description'] ?? '';
 $price = $_POST['price'] ?? null;
 $link = $_POST['link'] ?? '';
@@ -33,7 +34,8 @@ try {
     $stmt = $db-> prepare("
        UPDATE product SET
         name = :name,
-        company = :company,
+        company_id = :company,
+        category_id = :category,
         description = :description,
         price = :price,
         link = :link
@@ -43,6 +45,7 @@ try {
 
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':company', $company);
+    $stmt->bindParam(':category', $category);
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':price', $price);
     $stmt->bindParam(':link', $link);
@@ -51,8 +54,8 @@ try {
 
     # SAVE THE PICTURE TOO
 
-    if (isset($_FILES['image']) and $_FILES['image']['error'] == 0) {
-        move_uploaded_file($_FILES['image']['tmp_name'], "../../source/product/$id.jpg");
+    if (isset($_FILES['input-image']) and $_FILES['image']['error'] == 0) {
+        move_uploaded_file($_FILES['input-image']['tmp_name'], "../src/product/$id.jpg");
     }
 
 

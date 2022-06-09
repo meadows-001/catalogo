@@ -15,7 +15,7 @@ form {
     z-index: -1;
 }
 
-.image.default {
+.image-default {
     width: 200px;
     height: 200px;
 }
@@ -52,7 +52,7 @@ form {
     transition-duration: 500ms;
 }
 
-.box {
+.form-container-input {
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -135,33 +135,4 @@ select option {
     height: 3px;
     width: -webkit-fill-available;
     border-radius: 2px;
-}
-
-@media screen and (max-width: 900px) {
-    .navbar .navbar-menu-button,
-    .header-menu-text {
-        display: none !important;
-    }
-    .navbar .navbar-button,
-    .navbar .navbar-button .header-menu-icon {
-        display: flex !important;
-    }
-    .grid-container {
-        justify-content: normal;
-    }
-    .container {
-        margin: 10% 0;
-    }
-    form {
-        padding: 5% 0 20%;
-        border-radius: 0;
-    }
-    #image,
-    #button-img {
-        top: auto;
-        margin: 5px;
-    }
-    .form-textarea {
-        font-size: 30px;
-    }
 }

@@ -91,7 +91,7 @@ function company_modify_product(id) {
 }
 
 function add_product() {
-    location = "/../function/company/product_add.php"
+    location = "/../function/company_wproduct_add.php"
 }
 
 function product_show(id) {

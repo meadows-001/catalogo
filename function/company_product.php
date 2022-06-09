@@ -1,12 +1,16 @@
 <?php
 require_once "../config.php";
 
+$user = $_SESSION['user']['username'];
+
 try {
     $sql = "SELECT p.id as id, p.name as name_product, p.description as description_product, u.username as company, c.name as category, p.price as price, p.link as link FROM product p
-                LEFT JOIN category c on p.category_id = c.id
-                LEFT JOIN user u on p.company_id = u.id";
+            LEFT JOIN category c on p.category_id = c.id
+            LEFT JOIN user u on p.company_id = u.id
+            WHERE u.username = :username";
 
     $stmt = $db->prepare($sql);
+    $stmt->bindValue(':username', $user);
 
     $stmt->execute();
 } catch (PDOException $e) {
@@ -14,25 +18,25 @@ try {
     die();
 }
 
-
 ?>
 
 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
     <div class="item">
         <div class="item-container-image">
-            <?php if (file_exists("../src/product/$row[id].jpg")) : ?>
-                <img class="item-image" src="../src/product/<?= $row['id'] ?>.jpg">
+            <?php if (file_exists("../../source/product/$row[id].jpg")) : ?>
+                <img class="image" src="../source/product/<?= $row['id'] ?>.jpg">
             <?php else : ?>
                 <img class="item-image default" src="../src/product/default.png">
             <?php endif; ?>
         </div>
 
         <div class="item-container-information">
-            <label class="item-element">id: <?= $row['id'] ?></label>
-            <label class="item-element">product: <?= $row['name_product'] ?></label>
-            <label class="item-element">company: <?= $row['company'] ?></label>
+        <label class="item-element name"><?= $row['name_product'] ?></label>
+            <label class="item-element description"><?= $row['description_product'] ?></label>
+            <label class="item-element price"><?= $row['price'] ?>$</label>
+       
             <div class="item-container">
-                <a class="item-button company modify" onclick="admin_modify_product(<?= $row['id'] ?>)">Modify</a>
+                <a class="item-button company modify" onclick="company_modify_product(<?= $row['id'] ?>)">Modify</a>
                 <a class="item-button company delete" onclick="delete_element(<?= $row['id'] ?>)">Remove</a>
             </div>
         </div>

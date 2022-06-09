@@ -1,6 +1,6 @@
 <?php
 
-require "../../config.php";
+require "../config.php";
 
 #echo '<pre>';  var_export($_POST); var_export($_FILES); die;
 

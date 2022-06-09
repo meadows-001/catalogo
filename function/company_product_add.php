@@ -1,16 +1,20 @@
-<?php require "../config.php"; ?>
+<?php
+require "../config.php";
+require_once '../authorized.php';
+verify('company');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>modify product</title>
+    <title>new product</title>
 
     <link href="../../style/main.css" rel="stylesheet">
     <link href="../../style/modify-add.css" rel="stylesheet">
     <link href="../../style/navbar.css" rel="stylesheet">
 
-    <script src="main.js" rel="script"></script>
+    <script src="../main.js" rel="script"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
@@ -18,7 +22,7 @@
 <body>
     <nav class="navbar" id="navbar">
         <div class="navbar-side-left">
-            <ion-icon class="navbar-logo" name="hammer-outline"></ion-icon>
+            <ion-icon class="navbar-logo" name="bag-add-outline"></ion-icon>
         </div>
         <div class="navbar-side-center"></div>
         <div class="navbar-side-right">
@@ -28,11 +32,8 @@
             </a>
         </div>
     </nav>
-
     <div class="container">
         <?php
-
-        $id = intval($_GET['id']) ?? 0;
 
         try {
 
@@ -44,8 +45,12 @@
             $stmt_category = $db->prepare("SELECT * FROM category");
             $stmt_category->execute();
 
-            $stmt_company = $db->prepare("SELECT * FROM user WHERE role = 'company'");
+            $stmt_company = $db->prepare("SELECT id FROM user WHERE username = :username");
+            $stmt_company->bindParam(":username", $_SESSION['user']['username']);
             $stmt_company->execute();
+
+            $id_company = $stmt_company->fetch(PDO::FETCH_ASSOC);
+            $id_company = $id_company['id'];
         } catch (PDOException $e) {
             echo "Errore: " . $e->getMessage();
             die();
@@ -56,7 +61,6 @@
         if (isset($_SESSION['add_data'])) {
             $msg = $_SESSION['add_data']['msg'];
             $name = $_SESSION['add_data']['name'];
-            $company = $_SESSION['add_data']['company'];
             $category = $_SESSION['add_data']['category'];
             $description = $_SESSION['add_data']['description'];
             $price = $_SESSION['add_data']['price'];
@@ -64,33 +68,27 @@
             unset($_SESSION['add_data']);
         } else {
             $msg = '';
-            $name = $product['name'];
-            $id_company = $product['company_id'];
-            $description =  $product['description'];
-            $price = $product['price'];
-            $link = $product['link'];
+            $name = '';
+            //$company = '';
+            $category = '';
+            $description = '';
+            $price = '';
+            $link = '';
         }
 
         ?>
+        <form method="post" action="company_product_add_function.php" enctype="multipart/form-data">
 
-        <form method="post" action="admin_product_modify_function.php" enctype="multipart/form-data">
-
-            <input id="input-image" name="input-image" type='file' onchange="select_image(this);"/>
+            <input id="input-image" name="input-image" type='file' onchange="select_image(this);" />
             <div class="form-button-image">
                 browse
                 <ion-icon class="icon" name="image-outline"></ion-icon>
             </div>
             <div class="form-container-image">
-                <?php if (file_exists("../../src/src/$product[id].jpg")) : ?>
-                    <img id="item-image" class="image" src="../../src/product/<?= $product['id'] ?>.jpg">
-                <?php else : ?>
-                    <img id="item-image" class="image default" src="../../src/product/alert-outline.png">
-                <?php endif; ?>
-
+                <img id="item-image" class="image" src="../../src/product/alert-outline.png">
             </div>
 
             <div class="form-container">
-
                 <div class="form-container-input">
                     <label class="label name" for="name">name</label>
                     <input class="form-textarea" type="text" name="name" value="<?= $name ?>">
@@ -98,14 +96,11 @@
                 </div>
 
                 <div class="form-container-input">
-                    <label class="label company_id" for="company_id">company</label>
-                    <select class="form-textarea" name="company_id">
-                        <option>company</option>
-                        <?php while ($row = $stmt_company->fetch(PDO::FETCH_ASSOC)) : ?>
-                            <?php $selected = ($row['id'] == $product['company_id']) ? 'selected' : '' ?>
-                            <option value="<?= $row['id'] ?>" <?= $selected ?>><?= $row['username'] ?></option>
-                        <?php endwhile ?>
-                    </select>
+                    <label class="label company" for="company">company</label>
+                    <label class="form-textarea" name="company">
+                        <?= $company ?>
+                        <input hidden value="<?= $id_company ?>" name="company_id">
+                    </label>
                     <div class="form-textarea-status"></div>
                 </div>
 
@@ -148,6 +143,10 @@
             </div>
         </form>
     </div>
+    </div>
+    </div>
+    <canvas id="background"></canvas>
+
 </body>
 
 </html>
