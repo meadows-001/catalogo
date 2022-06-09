@@ -35,7 +35,7 @@ if (!isset($_SESSION['backto'])) {
         </div>
         <div class="navbar-side-center"></div>
         <div class="navbar-side-right">
-            <a class="navbar-button" onclick="history.back()">
+            <a class="navbar-button r" onclick="history.back()">
                 <label class="navbar-text">cancel</label>
                 <ion-icon class="navbar-icon" name="close-outline"></ion-icon>
             </a>

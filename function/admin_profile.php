@@ -28,7 +28,7 @@ try {
         <div class="item-container-information">
             <label class="item-element username">username: <?= $row['username'] ?></label>
             <label class="item-element role">role: <?= $row['role'] ?></label>
-                <a class="item-button delete" onclick="delete_profile(<?= $row['id'] ?>)">delete</a>
+                <a class="item-button delete" onclick="delete_profile(<?= $row['id'] ?>)">Remove</a>
         </div>
     </div>
 <?php endwhile ?>

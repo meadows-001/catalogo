@@ -30,20 +30,20 @@ verify('admin');
             </div>
             <div class="navbar-side-center"></div>
             <div class="navbar-side-right">
-                <a class="navbar-button" href="setting.php">
-                    <label class="navbar-text">setting</label>
-                    <ion-icon class="navbar-icon" name="cog-outline"></ion-icon>
-                </a>
-                <a class="navbar-button" href="../function/login/logout_function.php">
-                    <label class="navbar-text">logout</label>
-                    <ion-icon class="navbar-icon" name="log-out-outline"></ion-icon>
-                </a>
-                <a class="navbar-button show-profile" id="show" onclick="show_div()">
+                <a class="navbar-button show-profile g" id="show" onclick="show_div()">
                     <label class="navbar-text text-profile">profile</label>
                     <ion-icon class="navbar-icon icon-profile" name="person-outline"></ion-icon>
 
                     <label class="navbar-text text-product">product</label>
                     <ion-icon class="navbar-icon icon-product" name="pricetag-outline"></ion-icon>
+                </a>
+                <a class="navbar-button g" href="setting.php">
+                    <label class="navbar-text">setting</label>
+                    <ion-icon class="navbar-icon" name="cog-outline"></ion-icon>
+                </a>
+                <a class="navbar-button r" href="../function/login/logout_function.php">
+                    <label class="navbar-text">logout</label>
+                    <ion-icon class="navbar-icon" name="log-out-outline"></ion-icon>
                 </a>
             </div>
         </nav>

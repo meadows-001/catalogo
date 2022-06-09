@@ -14,8 +14,8 @@
     <link href="../source/favicon/shop.png" rel="icon">
 
     <link href="../style/main.css" rel="stylesheet">
-    <link href="../style/page/setting.css" rel="stylesheet">
-    <link href="../style/features/navbar.css" rel="stylesheet">
+    <link href="../style/setting.css" rel="stylesheet">
+    <link href="../style/navbar.css" rel="stylesheet">
 
     <script src="../function/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -23,30 +23,18 @@
 </head>
 
 <body>
-    <div class="grid-page">
-        <div class="navbar-main">
-            <nav class="navbar" id="navbar">
-                <div class="left">
-                    <ion-icon class="header-icon" name="cog-outline"></ion-icon>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-side-left">
+                    <ion-icon class="navbar-logo" name="cog-outline"></ion-icon>
                 </div>
-                <div class="center"></div>
-                <div class="right">
-                    <a class="navbar-button" href="../function/login/logout_function.php">
-                        <label class="header-menu-text">logout</label>
-                        <ion-icon class="header-menu-icon" name="log-out-outline"></ion-icon>
-                    </a>
-                    <a class="navbar-button" id="filter_button">
-                        filter
-                        <ion-icon class="header-menu-icon" name="funnel-outline"></ion-icon>
-                    </a>
-                </div>
-                <div class="menu">
-                    <a class="navbar-menu-button" onclick="navbar()">
-                        <ion-icon class="header-icon" name="menu-outline"></ion-icon>
-                    </a>
+                <div class="navbar-side-center"></div>
+                <div class="navbar-side-right">
+                <a class="navbar-button r" onclick="history.back()">
+                <label class="navbar-text">Home</label>
+                <ion-icon class="navbar-icon" name="home-outline"></ion-icon>
+            </a>
                 </div>
             </nav>
-        </div>
 
         <div class="grid-container">
             <div class="container">
@@ -59,10 +47,6 @@
                 </form>
             </div>
         </div>
-
-
-    </div>
-    <canvas id="background"></canvas>
 </body>
 
 </html>

@@ -15,12 +15,12 @@ function show_div() {
     let profiles = document.getElementById('profiles');
     let products = document.getElementById('products');
 
-    if (button.className === 'navbar-button show-profile') {
-        button.className = 'navbar-button show-product';
+    if (button.className === 'navbar-button show-profile g') {
+        button.className = 'navbar-button show-product g';
         profiles.style.display = 'none';
         products.style.display = 'flex';
     } else {
-        button.className = 'navbar-button show-profile';
+        button.className = 'navbar-button show-profile g';
         profiles.style.display = 'flex';
         products.style.display = 'none';
     }
