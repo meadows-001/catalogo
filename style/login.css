@@ -118,7 +118,7 @@ select {
 .form-button-image {
     display: flex;
     height: 200px;
-    position: fixed;
+    position: fixeddw;
     top: calc(192px + 10vh);
     width: 355px;
     background: rgb(0, 0, 0, 0.4);

@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     background: rgba(0, 0, 0, 0.05);
-    box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0px 5px 3px rgba(0, 0, 0, 0.5);
     height: 70px;
 }
 
@@ -11,13 +11,13 @@
     margin: 15px;
     width: 40px;
     height: 40px;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .navbar-icon {
     width: 30px;
     height: 30px;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(0, 0, 0, 0.8);
     transition-duration: 500ms;
 }
 
@@ -35,17 +35,19 @@
     margin-left: 10px;
     height: 40px;
     padding: 0 10px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
     font-size: 20px;
     font-weight: bold;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(0, 0, 0, 0.7);
     transition-duration: 500ms;
 }
 
 .navbar-button.g:hover {
     background: rgba(68, 237, 122, 0.91);
+    border: 2px solid rgba(68, 237, 122, 0.91);
     transition-duration: 500ms;
 }
 
