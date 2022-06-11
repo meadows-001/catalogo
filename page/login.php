@@ -37,7 +37,6 @@ if (!isset($_SESSION['backto'])) {
         <div class="navbar-side-right">
             <a class="navbar-button r" onclick="history.back()">
                 <label class="navbar-text">cancel</label>
-                <ion-icon class="navbar-icon" name="close-outline"></ion-icon>
             </a>
         </div>
     </nav>
@@ -49,28 +48,22 @@ if (!isset($_SESSION['backto'])) {
             <?php if ($_SESSION['log'] == 'error_log') : ?>
                 <label class="form-message"><?= $_SESSION['msg'] ?></label>
                 <style type="text/css">
-                    .status {
-                        background: rgb(200, 0, 0, 0.8);
+                    .textarea {
+                        border:1px solid rgb(250, 56, 56);
                     }
                 </style>
                 <?php unset($_SESSION['msg']); ?>
                 <?php $_SESSION['log'] = ''; ?>
             <?php endif; ?>
 
-            <div class="form-container">
-                <input class="form-input username" name="username" size="30" placeholder="username" value="<?= $_SESSION['add_data']['username'] ?? '' ?>">
-                <canvas class="form-input status"></canvas>
-            </div>
+                <input class="form-input username textarea" name="username" size="30" placeholder="username" value="<?= $_SESSION['add_data']['username'] ?? '' ?>">
+            
 
-            <div class="form-container">
-                <input class="form-input password" name="password" type="password" size="30" placeholder="password">
-                <canvas class="form-input status"></canvas>
-            </div>
+                <input class="form-input password textarea" name="password" type="password" size="30" placeholder="password">
+            
 
-            <div class="form-container">
                 <input class="form-input submit" type="submit" value="login">
                 <label class="form-text">you don't have an account? <a class="form-link" href="register.php">register</a></label>
-            </div>
         </form>
     </div>
 
