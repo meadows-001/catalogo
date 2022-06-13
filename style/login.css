@@ -33,16 +33,12 @@ form {
     padding: 5px;
     margin: 5px;
     border-radius: 5px;
-    width: 7vw;
+    width: 10vw;
     font-size: 20px;
     font-family: Calibri;
     outline: none;
     text-align: center;
     transition-duration: 1000ms;
-}
-
-.textarea {
-    border: 1px solid #cdd9e58f;
 }
 
 select {
@@ -54,7 +50,6 @@ select {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-left: 10px;
     height: 30px;
     padding: 0 10px;
     background: rgba(0, 0, 0, 0);

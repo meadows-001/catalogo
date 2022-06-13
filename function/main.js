@@ -87,7 +87,7 @@ function admin_modify_product(id) {
 }
 
 function company_modify_product(id) {
-    location = "/../function/company/product_modify.php?id=" + id
+    location = "../function/company_product_modify.php?id=" + id
 }
 
 function add_product() {

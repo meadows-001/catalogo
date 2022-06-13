@@ -14,7 +14,7 @@ verify('company');
     <link href="../../style/modify-add.css" rel="stylesheet">
     <link href="../../style/navbar.css" rel="stylesheet">
 
-    <script src="../main.js" rel="script"></script>
+    <script src="main.js" rel="script"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
@@ -79,66 +79,66 @@ verify('company');
         ?>
         <form method="post" action="company_product_add_function.php" enctype="multipart/form-data">
 
-            <input id="input-image" name="input-image" type='file' onchange="select_image(this);" />
-            <div class="form-button-image">
-                browse
-                <ion-icon class="icon" name="image-outline"></ion-icon>
-            </div>
+            <label class="form-title">Add Product</label>
+
             <div class="form-container-image">
-                <img id="item-image" class="image" src="../../src/product/alert-outline.png">
+                <input id="input-image" name="input-image" type='file' onchange="select_image(this);">
+                <div class="form-button-image">
+                    browse
+                    <ion-icon class="icon" name="image-outline"></ion-icon>
+                </div>
+
+                <ion-icon class="default" name="alert-outline"></ion-icon>
+                <img id="item-image" class="image">
+
             </div>
+
 
             <div class="form-container">
                 <div class="form-container-input">
-                    <label class="label name" for="name">name</label>
-                    <input class="form-textarea" type="text" name="name" value="<?= $name ?>">
-                    <div class="form-textarea-status"></div>
+                    <label class="form-label name" for="name">name</label>
+                    <input class="form-input" type="text" name="name" value="<?= $name ?>">
                 </div>
 
                 <div class="form-container-input">
-                    <label class="label company" for="company">company</label>
-                    <label class="form-textarea" name="company">
+                    <label class="form-label company" for="company">company</label>
+                    <label class="form-input" name="company">
                         <?= $company ?>
                         <input hidden value="<?= $id_company ?>" name="company_id">
                     </label>
-                    <div class="form-textarea-status"></div>
                 </div>
 
                 <div class="form-container-input">
-                    <label class="label category" for="category">category</label>
-                    <select class="form-textarea" name="category_id">
-                        <option>select a category</option>
+                    <label class="form-label category" for="category">category</label>
+                    <select class="form-input" name="category_id">
+                        <option hidden>category</option>
                         <?php while ($row = $stmt_category->fetch(PDO::FETCH_ASSOC)) : ?>
                             <?php $selected = ($row['id'] == $product['category_id']) ? 'selected' : '' ?>
                             <option value="<?= $row['id'] ?>" <?= $selected ?>><?= $row['name'] ?></option>
                         <?php endwhile ?>
                     </select>
-                    <div class="form-textarea-status"></div>
                 </div>
 
                 <div class="form-container-input">
-                    <label class="label description" for="description">description</label>
-                    <input class="form-textarea" type="text" name="description" value="<?= $description ?>">
-                    <div class="form-textarea-status"></div>
+                    <label class="form-label description" for="description">description</label>
+                    <input class="form-input" type="text" name="description" value="<?= $description ?>">
                 </div>
 
                 <div class="form-container-input">
-                    <label class="label price" for="price">Price</label>
-                    <input class="form-textarea" type="number" name="price" value="<?= $price ?>">
-                    <div class="form-textarea-status"></div>
+                    <label class="form-label price" for="price">Price</label>
+                    <input class="form-input" type="number" name="price" value="<?= $price ?>">
                 </div>
 
                 <div class="form-container-input">
-                    <label class="label link" for="link">Link</label>
-                    <input class="form-textarea" type="url" name="link" value="<?= $link ?>">
-                    <div class="form-textarea-status"></div>
+                    <label class="form-label link" for="link">Link</label>
+                    <input class="form-input" type="url" name="link" value="<?= $link ?>">
                 </div>
 
                 <input hidden id="id" name="id" type="number" value="<?= $id ?>">
             </div>
 
-            <div class="form-container">
-                <input class="form-button reset" type="reset">
+            <div class="form-container buttons">
+                <input class="form-button reset" type="reset" value="reset">
                 <input class="form-button" type="submit" value="save">
             </div>
         </form>

@@ -27,6 +27,7 @@
         <div class="navbar-side-right">
             <a class="navbar-button g" href="login.php">
                 <label class="navbar-text">login</label>
+                <ion-icon class="navbar-icon" name="log-in-outline"></ion-icon>
             </a>
         </div>
     </nav>

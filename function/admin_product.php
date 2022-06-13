@@ -29,8 +29,8 @@ try {
 
         <div class="item-container-information">
             <label class="item-element">id: <?= $row['id'] ?></label>
-            <label class="item-element">product: <?= $row['name_product'] ?></label>
-            <label class="item-element">company: <?= $row['company'] ?></label>
+            <label class="item-element"><?= $row['name_product'] ?></label>
+            <label class="item-element">by <?= $row['company'] ?></label>
             <div class="item-container">
                 <a class="item-button company modify" onclick="admin_modify_product(<?= $row['id'] ?>)">Modify</a>
                 <a class="item-button company delete" onclick="delete_element(<?= $row['id'] ?>)">Remove</a>

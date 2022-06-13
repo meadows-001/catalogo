@@ -23,8 +23,8 @@ try {
 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
     <div class="item">
         <div class="item-container-image">
-            <?php if (file_exists("../../source/product/$row[id].jpg")) : ?>
-                <img class="image" src="../source/product/<?= $row['id'] ?>.jpg">
+            <?php if (file_exists("../src/product/$row[id].jpg")) : ?>
+                <img class="item-image" src="../src/product/<?= $row['id'] ?>.jpg">
             <?php else : ?>
                 <img class="item-image default" src="../src/product/default.png">
             <?php endif; ?>

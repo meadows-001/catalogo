@@ -14,15 +14,15 @@ $link = $_POST['link'] ?? '';
 if ($price == '') $price = null;
 //var_dump($year);
 
-echo 'name: ', $name, ' company: ' ,$company, ' category: ', $category, ' description: ', $description, ' price: ', $price,' link: ', $link;
+echo 'name: ', $name, ' company: ', $company, ' category: ', $category, ' description: ', $description, ' price: ', $price, ' link: ', $link;
 
 if ($name == '' || $company == '' || $category == '' || $price == '' || $description == '') {
     $_SESSION['add_data'] =  [
         'msg' => 'Some required data is missing',
-        'name' => $name ,
+        'name' => $name,
         'company' => $company,
         'category' => $category,
-        'description' => $description ,
+        'description' => $description,
         'price' => $price,
         'link' => $link
     ];
@@ -31,7 +31,7 @@ if ($name == '' || $company == '' || $category == '' || $price == '' || $descrip
 }
 try {
 
-    $stmt = $db-> prepare("
+    $stmt = $db->prepare("
        insert into product 
            (name, company_id, category_id, description, price, link) VALUES 
            (:name, :company, :category, :description, :price, :link);
@@ -45,30 +45,22 @@ try {
     $stmt->bindParam(':link', $link);
     $stmt->execute();
 
-    /*
-    $stmt_id = $db -> prepare("
-        select id from product order by id desc limit 1;
-    ");
-    $row = $stmt_id->fetch(PDO::FETCH_hASSOC);
-    */
-    $id = $db->lastInsertId();
+
+    $find_id = $db->prepare("SELECT id FROM product ORDER BY id desc LIMIT 1");
+    $find_id->execute();
+    $id = $find_id->fetch(PDO::FETCH_ASSOC);
+
+    //$id = $db->lastInsertId();
 
     # SAVE THE PICTURE TOO
 
-    if (isset($_FILES['image']) and $_FILES['image']['error'] == 0) {
-        move_uploaded_file($_FILES['image']['tmp_name'], "../../source/product/$id.jpg");
+    if (isset($_FILES['input-image']) and $_FILES['input-image']['error'] == 0) {
+        move_uploaded_file($_FILES['input-image']['tmp_name'], "../src/product/$id[id].jpg");
     }
-
-
-}catch (PDOException $e) {
+} catch (PDOException $e) {
     echo "Errore: " . $e->getMessage();
+    header('location: company_product_add.php');
     die();
 }
 
 header('location: /index.php');
-
-
-?>
-
-
-

@@ -54,7 +54,7 @@ try {
 
     # SAVE THE PICTURE TOO
 
-    if (isset($_FILES['input-image']) and $_FILES['image']['error'] == 0) {
+    if (isset($_FILES['input-image']) and $_FILES['input-image']['error'] == 0) {
         move_uploaded_file($_FILES['input-image']['tmp_name'], "../src/product/$id.jpg");
     }
 

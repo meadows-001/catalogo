@@ -32,7 +32,7 @@ verify('company');
             <div class="navbar-side-right">
                 <a class="navbar-button g" onclick="add_product()">
                     <label class="navbar-text">add product</label>
-                    <ion-icon class="navbar-icon" name="bag-add-outline"></ion-icon>
+                    <ion-icon class="navbar-icon" name="add-outline"></ion-icon>
                 </a>
                 <a class="navbar-button g" href="setting.php">
                     <label class="navbar-text">setting</label>

@@ -33,12 +33,18 @@ try {
     $stmt->bindParam(':salt', $security_salt);
     $stmt->execute();
 
+    $find_id = $db->prepare("SELECT id FROM user ORDER BY id desc LIMIT 1");
+    $find_id->execute();
+    $id = $find_id->fetch(PDO::FETCH_ASSOC);
 
+    if (isset($_FILES['input-image']) and $_FILES['input-image']['error'] == 0) {
+        move_uploaded_file($_FILES['input-image']['tmp_name'], "../../src/profile/$id[id].jpg");
+    }
 
 } catch (PDOException $e) {
     echo "Errore: " , $e->getMessage();
+    //header('location: ../../page/register.php');
     die();
-
 }
 
 

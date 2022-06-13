@@ -1,4 +1,8 @@
-<?php require "../config.php"; ?>
+<?php
+require "../config.php";
+require_once '../authorized.php';
+verify('company');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,9 +10,9 @@
     <meta charset="UTF-8">
     <title>modify product</title>
 
-    <link href="../../style/main.css" rel="stylesheet">
-    <link href="../../style/modify-add.css" rel="stylesheet">
-    <link href="../../style/navbar.css" rel="stylesheet">
+    <link href="../style/main.css" rel="stylesheet">
+    <link href="../style/modify-add.css" rel="stylesheet">
+    <link href="../style/navbar.css" rel="stylesheet">
 
     <script src="main.js" rel="script"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -22,7 +26,7 @@
         </div>
         <div class="navbar-side-center"></div>
         <div class="navbar-side-right">
-            <a class="navbar-button r" onclick="history.back()">
+            <a class="navbar-button" onclick="history.back()">
                 <label class="navbar-text">cancel</label>
                 <ion-icon class="navbar-icon" name="close-outline"></ion-icon>
             </a>
@@ -43,8 +47,12 @@
         $stmt_category = $db->prepare("SELECT * FROM category");
         $stmt_category->execute();
 
-        $stmt_company = $db->prepare("SELECT * FROM user WHERE role = 'company'");
+        $stmt_company = $db->prepare("SELECT id FROM user WHERE username = :username");
+        $stmt_company->bindParam(":username", $_SESSION['username']);
         $stmt_company->execute();
+
+        $id_company = $stmt_company->fetch(PDO::FETCH_ASSOC);
+        $id_company = $id_company['id'];
     } catch (PDOException $e) {
         echo "Errore: " . $e->getMessage();
         die();
@@ -73,7 +81,8 @@
     ?>
 
     <div class="container">
-        <form method="post" action="admin_product_modify_function.php" enctype="multipart/form-data">
+
+        <form method="post" action="../company/product_modify_function.php" enctype="multipart/form-data">
 
             <label class="form-title">Modify</label>
 
@@ -84,7 +93,7 @@
                     <ion-icon class="icon" name="image-outline"></ion-icon>
                 </div>
 
-                <?php if (file_exists("../src/$product[id].jpg")) : ?>
+                <?php if (file_exists("../src/product/$product[id].jpg")) : ?>
                     <img id="item-image" class="image" src="../src/product/<?= $product['id'] ?>.jpg">
                 <?php else : ?>
                     <ion-icon class="default" name="alert-outline"></ion-icon>
@@ -94,27 +103,23 @@
             </div>
 
             <div class="form-container">
-
                 <div class="form-container-input">
                     <label class="form-label name" for="name">name</label>
                     <input class="form-input" type="text" name="name" value="<?= $name ?>">
                 </div>
 
                 <div class="form-container-input">
-                    <label class="form-label company_id" for="company_id">company</label>
-                    <select class="form-input" name="company_id">
-                        <option hidden>company</option>
-                        <?php while ($row = $stmt_company->fetch(PDO::FETCH_ASSOC)) : ?>
-                            <?php $selected = ($row['id'] == $product['company_id']) ? 'selected' : '' ?>
-                            <option value="<?= $row['id'] ?>" <?= $selected ?>><?= $row['username'] ?></option>
-                        <?php endwhile ?>
-                    </select>
+                    <label class="form-label company" for="company">company</label>
+                    <label class="form-input" name="company">
+                        <?= $company ?>
+                        <input hidden value="<?= $id_company ?>" name="company_id">
+                    </label>
                 </div>
 
                 <div class="form-container-input">
                     <label class="form-label category" for="category">category</label>
                     <select class="form-input" name="category_id">
-                        <option hidden>category</option>
+                        <option>select a category</option>
                         <?php while ($row = $stmt_category->fetch(PDO::FETCH_ASSOC)) : ?>
                             <?php $selected = ($row['id'] == $product['category_id']) ? 'selected' : '' ?>
                             <option value="<?= $row['id'] ?>" <?= $selected ?>><?= $row['name'] ?></option>
@@ -140,8 +145,8 @@
                 <input hidden id="id" name="id" type="number" value="<?= $id ?>">
             </div>
 
-            <div class="form-container buttons">
-                <input class="form-button reset" type="reset" value="Reset">
+            <div class="form-container">
+                <input class="form-button reset" type="reset">
                 <input class="form-button" type="submit" value="save">
             </div>
         </form>

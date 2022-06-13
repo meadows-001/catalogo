@@ -21,7 +21,7 @@ if (isset($_SESSION['add_data'])) {
 
     <title>register</title>
     <link href="../style/main.css" rel="stylesheet">
-    <link href="../style/login.css" rel="stylesheet">
+    <link href="../style/register.css" rel="stylesheet">
     <link href="../style/navbar.css" rel="stylesheet">
 
     <link href="../source/img/favicon/login.png" rel="icon">
@@ -47,17 +47,19 @@ if (isset($_SESSION['add_data'])) {
     </nav>
     </div>
     <div class="container">
-        <form method="post" action="../function/register/register_function.php" id="form">
+        <form method="post" action="../function/register/register_function.php" enctype="multipart/form-data">
 
             <label class="form-title">Register</label>
 
-            <input id="input-image" name="input-image" type='file' onchange="select_image(this);" />
-            <div class="form-button-image">
-                browse
-                <ion-icon class="icon" name="image-outline"></ion-icon>
-            </div>
             <div class="form-container-image">
-                <img id="item-image" class="image" src="../../src/product/alert-outline.png">
+                <input id="input-image" name="input-image" type='file' onchange="select_image(this);" />
+                <div class="form-button-image">
+                    browse
+                    <ion-icon class="icon" name="image-outline"></ion-icon>
+                </div>
+
+                <ion-icon class="default" name="alert-outline"></ion-icon>
+                <img id="item-image" class="image">
             </div>
 
             <?php if ($_SESSION['log'] == 'error_log') : ?>
@@ -71,30 +73,19 @@ if (isset($_SESSION['add_data'])) {
                 <?php $_SESSION['log'] = ''; ?>
             <?php endif; ?>
 
-            <div>
-                <div class="form-container">
+            <div class="form-container field">
                     <input class="form-input" name="username" size="30" placeholder="username" value="<?= $username ?>">
-                    <canvas class="form-input status"></canvas>
-                </div>
 
-                <div class="form-container">
                     <select class="form-input" name="role">
-                        <option value="" hidden style="color: black;">role</option>
-                        <option value="client" style="color: black;">client</option>
-                        <option value="company" style="color: black;">company</option>
+                        <option value="" hidden>role</option>
+                        <option value="client">client</option>
+                        <option value="company">company</option>
                     </select>
-                    <canvas class="form-input status"></canvas>
-                </div>
 
-                <div class="form-container">
                     <input class="form-input" name="password" type="password" size="30" placeholder="password">
-                    <canvas class="form-input status"></canvas>
-                </div>
-
-                <div class="form-container">
+         
                     <input class="form-input" name="confirm-password" type="password" size="30" placeholder="confirm password">
-                    <canvas class="form-input status"></canvas>
-                </div>
+
             </div>
 
             <div class="form-container">
