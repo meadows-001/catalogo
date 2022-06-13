@@ -1,6 +1,6 @@
 <?php
 
-require "../../config.php";
+require "../config.php";
 
 #echo '<pre>';  var_export($_POST); var_export($_FILES); die;
 
@@ -26,7 +26,7 @@ if ($name == '' || $company == null || $category == null) {
         'price' => $price,
         'link' => $link
     ];
-    header('location: /function/common/product_modify.php?id=' . $id);
+    header('location: /function/company_product_modify.php?id=' . $id);
     die;
 }
 

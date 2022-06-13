@@ -2,7 +2,6 @@
 require_once '../config.php';
 
 if (isset($_SESSION['add_data'])) {
-    $msg = $_SESSION['add_data']['msg'];
     $username = $_SESSION['add_data']['username'];
     unset($_SESSION['add_data']);
 } else {

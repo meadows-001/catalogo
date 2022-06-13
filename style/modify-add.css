@@ -100,11 +100,6 @@ form {
     outline: none;
 }
 
-.form-input.description {
-    height: 60px;
-    overflow: auto;
-}
-
 .buttons {
     display: flex;
     flex-direction: row;

@@ -47,18 +47,13 @@ verify('company');
         $stmt_category = $db->prepare("SELECT * FROM category");
         $stmt_category->execute();
 
-        $stmt_company = $db->prepare("SELECT id FROM user WHERE username = :username");
-        $stmt_company->bindParam(":username", $_SESSION['username']);
-        $stmt_company->execute();
+        $id_company = $_SESSION['user']['id'];
+        $company = $_SESSION['user']['username'];
 
-        $id_company = $stmt_company->fetch(PDO::FETCH_ASSOC);
-        $id_company = $id_company['id'];
     } catch (PDOException $e) {
         echo "Errore: " . $e->getMessage();
         die();
     }
-
-    $company = $_SESSION['user']['username'];
 
     if (isset($_SESSION['add_data'])) {
         $msg = $_SESSION['add_data']['msg'];
@@ -82,7 +77,7 @@ verify('company');
 
     <div class="container">
 
-        <form method="post" action="../company/product_modify_function.php" enctype="multipart/form-data">
+        <form method="post" action="company_product_modify_function.php" enctype="multipart/form-data">
 
             <label class="form-title">Modify</label>
 
@@ -112,7 +107,7 @@ verify('company');
                     <label class="form-label company" for="company">company</label>
                     <label class="form-input" name="company">
                         <?= $company ?>
-                        <input hidden value="<?= $id_company ?>" name="company_id">
+                        <input hidden value="<?= $id_company; ?>" name="company_id">
                     </label>
                 </div>
 
@@ -145,8 +140,8 @@ verify('company');
                 <input hidden id="id" name="id" type="number" value="<?= $id ?>">
             </div>
 
-            <div class="form-container">
-                <input class="form-button reset" type="reset">
+            <div class="form-container buttons">
+                <input class="form-button reset" type="reset" value="reset">
                 <input class="form-button" type="submit" value="save">
             </div>
         </form>

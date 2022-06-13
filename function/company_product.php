@@ -32,7 +32,7 @@ try {
 
         <div class="item-container-information">
         <label class="item-element name"><?= $row['name_product'] ?></label>
-            <label class="item-element description"><?= $row['description_product'] ?></label>
+            <textarea class="item-element description"><?= $row['description_product'] ?></textarea>
             <label class="item-element price"><?= $row['price'] ?>$</label>
        
             <div class="item-container">

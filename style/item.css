@@ -41,6 +41,10 @@
 }
 
 .description {
+    resize: none;
+    background: #2d333b;
+    border: none;
+    width: -webkit-fill-available;
     font-size: 12px;
     height: 80px;
     overflow: auto;

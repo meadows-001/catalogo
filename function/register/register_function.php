@@ -10,11 +10,10 @@ $password = $_POST['password'] ?? '';
 $confirm_password = $_POST['confirm-password'] ?? '';
 
 
-if ($username === '' || $role === '' || ($role != 'client' && $role != 'company') || $password != $confirm_password) {
-    $_SESSION['add_data'] = [
-        'msg' => 'some require data is missing or wrong',
-        'username' => $username
-    ];
+if ($username == '' || $role == '' || ($role != 'client' && $role != 'company') || $password != $confirm_password) {
+    $_SESSION['log'] = 'error_log';
+    $_SESSION['msg'] = 'some data are missing or wrong';
+    $_SESSION['add_data'] = ['username' => $username];
     header('location: ../../page/register.php');
     die();
 }
@@ -43,7 +42,9 @@ try {
 
 } catch (PDOException $e) {
     echo "Errore: " , $e->getMessage();
-    //header('location: ../../page/register.php');
+    $_SESSION['log'] = 'error_log';
+    $_SESSION['msg'] = 'username already used';
+    header('location: ../../page/register.php');
     die();
 }
 
