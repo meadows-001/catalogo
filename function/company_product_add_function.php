@@ -26,7 +26,7 @@ if ($name == '' || $company == '' || $category == '' || $price == '' || $descrip
         'price' => $price,
         'link' => $link
     ];
-    header('location: /function/company/product_add.php');
+    header('location: company_product_add.php');
     die;
 }
 try {
@@ -63,4 +63,4 @@ try {
     die();
 }
 
-header('location: /index.php');
+header('location: ../index.php');

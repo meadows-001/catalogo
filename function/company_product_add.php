@@ -10,9 +10,9 @@ verify('company');
     <meta charset="UTF-8">
     <title>new product</title>
 
-    <link href="../../style/main.css" rel="stylesheet">
-    <link href="../../style/modify-add.css" rel="stylesheet">
-    <link href="../../style/navbar.css" rel="stylesheet">
+    <link href="../style/main.css" rel="stylesheet">
+    <link href="../style/modify-add.css" rel="stylesheet">
+    <link href="../style/navbar.css" rel="stylesheet">
 
     <script src="main.js" rel="script"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

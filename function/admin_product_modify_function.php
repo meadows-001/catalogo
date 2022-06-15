@@ -26,7 +26,7 @@ if ($name == '') {
         'price' => $price,
         'link' => $link
     ];
-    header('location: /function/common/product_modify.php?id=' . $id);
+    header('location: admin_product_modify.php?id=' . $id);
     die;
 }
 try {
@@ -64,7 +64,7 @@ try {
     die();
 }
 
-header('location: /index.php');
+header('location: ../index.php');
 
 
 ?>
