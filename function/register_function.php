@@ -1,6 +1,6 @@
 <?php
 
-require "../../config.php";
+require "../config.php";
 
 var_export($_POST); #die;
 
@@ -14,7 +14,7 @@ if ($username == '' || $role == '' || ($role != 'client' && $role != 'company') 
     $_SESSION['log'] = 'error_log';
     $_SESSION['msg'] = 'some data are missing or wrong';
     $_SESSION['add_data'] = ['username' => $username];
-    header('location: ../../page/register.php');
+    header('location: ../page/register.php');
     die();
 }
 
@@ -37,17 +37,17 @@ try {
     $id = $find_id->fetch(PDO::FETCH_ASSOC);
 
     if (isset($_FILES['input-image']) and $_FILES['input-image']['error'] == 0) {
-        move_uploaded_file($_FILES['input-image']['tmp_name'], "../../src/profile/$id[id].jpg");
+        move_uploaded_file($_FILES['input-image']['tmp_name'], "../src/profile/$id[id].jpg");
     }
 
 } catch (PDOException $e) {
     echo "Errore: " , $e->getMessage();
     $_SESSION['log'] = 'error_log';
     $_SESSION['msg'] = 'username already used';
-    header('location: ../../page/register.php');
+    header('location: ../page/register.php');
     die();
 }
 
 
-header('location: /index.php');
+header('location: ../index.php');
 

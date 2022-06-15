@@ -84,7 +84,7 @@
                     <ion-icon class="icon" name="image-outline"></ion-icon>
                 </div>
 
-                <?php if (file_exists("../src/$product[id].jpg")) : ?>
+                <?php if (file_exists("../src/product/$product[id].jpg")) : ?>
                     <img id="item-image" class="image" src="../src/product/<?= $product['id'] ?>.jpg">
                 <?php else : ?>
                     <ion-icon class="default" name="alert-outline"></ion-icon>

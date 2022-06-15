@@ -30,6 +30,20 @@
     display: flex;
 }
 
-#products {
+#products_info {
     display: none;
+    width: -webkit-fill-available;
+}
+
+.filler {
+    display: flex;
+    flex-grow: 1;
+}
+
+#categories {
+    width: 0;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
 }

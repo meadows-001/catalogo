@@ -38,7 +38,7 @@ if (isset($_SESSION['add_data'])) {
         </div>
         <div class="navbar-side-center"></div>
         <div class="navbar-side-right">
-            <a class="navbar-button r" onclick="history.back()">
+            <a class="navbar-button r" href="../page/login.php">
                 <label class="navbar-text">cancel</label>
                 <ion-icon class="navbar-icon" name="close-outline"></ion-icon>
             </a>
@@ -46,7 +46,7 @@ if (isset($_SESSION['add_data'])) {
     </nav>
     </div>
     <div class="container">
-        <form method="post" action="../function/register/register_function.php" enctype="multipart/form-data">
+        <form method="post" action="../function/register_function.php" enctype="multipart/form-data">
 
             <label class="form-title">Register</label>
 

@@ -4,7 +4,7 @@ $id = $_GET['id'] ?? 0;
 
 echo 'id uguale a: ',  $id;
 
-require "../../config.php";
+require "../config.php";
 
 
 try {
@@ -12,8 +12,8 @@ try {
     $stmt->bindParam(1, $id);
     $stmt->execute();
 
-    if (file_exists("../../src/product/$id.jpg")) {
-        unlink("../../src/product/$id.jpg");
+    if (file_exists("../src/product/$id.jpg")) {
+        unlink("../src/product/$id.jpg");
     }
 
 } catch (PDOException $e) {
@@ -22,4 +22,4 @@ try {
 
 }
 
-header('location: /index.php');
+header('location: ../index.php');

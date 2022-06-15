@@ -29,7 +29,7 @@ try {
 
         <div class="item-container-information">
             <label class="item-element">id: <?= $row['id'] ?></label>
-            <label class="item-element"><?= $row['name_product'] ?></label>
+            <label class="item-element name"><?= $row['name_product'] ?></label>
             <label class="item-element">by <?= $row['company'] ?></label>
             <div class="item-container">
                 <a class="item-button company modify" onclick="admin_modify_product(<?= $row['id'] ?>)">Modify</a>

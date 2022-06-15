@@ -64,10 +64,14 @@ form {
 }
 
 .default {
-    height: 50px !important;
+    height: 50px;
     width: 50px;
-    padding: 100px;
+    padding: 75px;
     background: rgb(0, 0, 0, 0.4);
+    color: gray;
+    position: absolute;
+    border-radius: 100px;
+    z-index: -2;
 }
 
 .profile-container-information {

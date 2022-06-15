@@ -38,7 +38,7 @@ verify('company');
                     <label class="navbar-text">setting</label>
                     <ion-icon class="navbar-icon" name="cog-outline"></ion-icon>
                 </a>
-                <a class="navbar-button r" href="../function/login/logout_function.php">
+                <a class="navbar-button r" href="../function/logout_function.php">
                     <label class="navbar-text">logout</label>
                     <ion-icon class="navbar-icon" name="log-out-outline"></ion-icon>
                 </a>

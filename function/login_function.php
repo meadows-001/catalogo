@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../config.php";
+require_once "../config.php";
 
 $user = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
@@ -9,7 +9,7 @@ if ($user == '' ||  $password == '') {
     $_SESSION['add_data'] = ['username' => $user];
     $_SESSION['msg'] = 'complete field';
     $_SESSION['log'] = 'error_log';
-    header('location: ../../page/login.php');
+    header('location: ../page/login.php');
     die();
 }
 
@@ -39,4 +39,4 @@ try {
 
 $backto = $_SESSION['backto'] ?? '/index.php';
 unset($_SESSION['backto']);
-header("location: /index.php");
+header("location: ../index.php");

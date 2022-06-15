@@ -1,7 +1,7 @@
 <?php
 require_once '../config.php';
 if (!$_SESSION['user']) {
-    header('location: /index.php');
+    header('location: ../index.php');
 }
 
 $id = $_SESSION['user']['id'];
@@ -34,7 +34,7 @@ $id = $_SESSION['user']['id'];
         </div>
         <div class="navbar-side-center"></div>
         <div class="navbar-side-right">
-            <a class="navbar-button r" onclick="history.back()">
+            <a class="navbar-button r" href="../index.php">
                 <label class="navbar-text">Home</label>
                 <ion-icon class="navbar-icon" name="home-outline"></ion-icon>
             </a>
@@ -53,7 +53,8 @@ $id = $_SESSION['user']['id'];
                     <?php if (file_exists("../src/profile/$id.jpg")) : ?>
                         <img id="item-image" src="../src/profile/<?= $id ?>.jpg">
                     <?php else : ?>
-                        <img id="item-image default" src="../src/profile/default.png" style="opacity: 50%">
+                        <img id="item-image">
+                        <ion-icon class="default" name="person-sharp"></ion-icon>
                     <?php endif; ?>
 
                 </div>
