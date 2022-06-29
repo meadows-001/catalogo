@@ -11,8 +11,8 @@ if ($id == 1) {
     die();
 }
 try {
-    $stmt = $db->prepare("DELETE FROM user WHERE id = ?");
-    $stmt->bindParam(1, $id);
+    $stmt = $db->prepare("DELETE FROM user WHERE id = :id");
+    $stmt->bindParam(":id", $id);
     $stmt->execute();
 
     if (file_exists("../src/profile/$id.jpg")) {
