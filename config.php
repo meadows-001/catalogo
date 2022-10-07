@@ -2,7 +2,7 @@
 
 session_start();
 
-$db_host = "dev-prati.ddns.net";
+$db_host = "192.168.1.94";
 $db_user = "prati";
 $db_pass = "504260";
 $dbname = "catalogo";
